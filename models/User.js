@@ -5,6 +5,7 @@ const UserSchema = new Schema({
   type: {
     type: Number,
     required: [true, "type field is required"],
+    default: 2,
   },
   name: {
     type: String,
@@ -20,6 +21,11 @@ const UserSchema = new Schema({
   phone: {
     type: Number,
     required: [true, "Please Enter your phone Number"],
+  },
+
+  password: {
+    type: String,
+    required: [true, "Please Enter your Password"],
   },
 
   latitude: {
