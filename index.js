@@ -1,14 +1,17 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
+const bodyParser = require("body-parser");
 
 //setup express app
 const app = express();
 
+app.use(bodyParser.urlencoded({extended:true}));
+app.use(bodyParser.json());
 app.use(cors());
 
 //connect to mongo db
-mongoose.connect("mongodb://localhost/mechanic_app", {
+mongoose.connect("mongodb+srv://go_ammar:desert123@cluster0.ukbzl.mongodb.net/FYPDatabase?retryWrites=true&w=majority", {
   useFindAndModify: false,
   useNewUrlParser: true,
   useUnifiedTopology: true,
@@ -18,7 +21,7 @@ mongoose.connect("mongodb://localhost/mechanic_app", {
 
 mongoose.Promise = global.Promise;
 
-app.use(express.json());
+// app.use(express.json());
 
 //Initializing routes
 app.use("/api/users", require("./routes/Users"));

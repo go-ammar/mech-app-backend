@@ -67,15 +67,16 @@ router.get("/:id", (req, res, next) => {
 
 router.post("/register", (req, res) => {
   const { type, name, email, password, phone, latitude, longitude } = req.body;
-
+  console.log(req.body);
   //Check Simple Validation
   if (!name || !email || !password || !phone || !latitude || !longitude) {
     return res.status(400).json({ msg: "Please Enter All the fields" });
+    
   }
 
   //Check For Existing User
   User.findOne({ email }).then((user) => {
-    if (user) return res.status(400).json({ msg: "User Already Exist" });
+    if (user) return res.status(400).json({ msg: "User Already Exists" });
 
     const newUser = new User({
       name,
@@ -125,7 +126,7 @@ router.post("/login", (req, res) => {
   //Check Simple Validation
   if (!email || !password) {
     //return res.send('Please Enter all the Fields');
-    res.status(400).json({ msg: "Please Enter all the feilds" });
+    res.status(400).json({ msg: "Please Enter all the fields" });
   }
 
   //Check For Existing User
