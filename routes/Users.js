@@ -36,12 +36,8 @@
 //   });
 // });
 
-// //Delete user from the database
-// router.delete("/:id", (req, res, next) => {
-//   User.findByIdAndDelete({ _id: req.params.id }).then((User) => {
-//     res.send(User);
-//   });
-// });
+//Delete user from the database
+
 
 // module.exports = router;
 
@@ -55,6 +51,13 @@ const jwt = require("jsonwebtoken");
 router.get("/", (req, res) => {
   User.find({}).then((users) => {
     res.send(users);
+  });
+});
+
+//Delete from database
+router.delete("/:id", (req, res, next) => {
+  User.findByIdAndDelete({ _id: req.params.id }).then((User) => {
+    res.send(User);
   });
 });
 
