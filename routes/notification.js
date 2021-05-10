@@ -13,9 +13,15 @@ router.post("/register-device", (req, res) => {
 });
 
 router.post("/send-notification", (req, res) => {
-  sendNotificationAndroid({ title: req.body.title, body: req.body.body }, [
-    "fIRx8dnvSISwvgvYXJ_LsB:APA91bFZsp1w7O299yFDWR-hNMEZ1l1RMQRG-O98jYOlg3EOo6Z01uTd31nbd7bk15sPKLUDxVgMQc0kgQ63thhrcDnleZM87FtznbJTNZYOUCAu0sFttghIzKo810JSmqg6npf0RGg7",
-  ]);
+  var firebaseDeviceTokens = [];
+  var token = req.body.token.toString();
+
+  firebaseDeviceTokens.push(token);
+
+  sendNotificationAndroid(
+    { title: req.body.title, body: req.body.body },
+    firebaseDeviceTokens
+  );
   res.json("ok");
 });
 
