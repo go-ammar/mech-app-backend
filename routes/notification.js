@@ -7,9 +7,7 @@ var sender = new gcm.Sender(
   "AAAA71p0hGQ:APA91bHdT4Huz9V3_pf_nFtsqbA-hsafXFyjDqAZqYnZ4gmoXyEkE4mBOafm4He9Q2Jie_HPNiOH1vC5mEepxtvibm7XFLaoeMvAQD_HRyCWhlD-B0RlleXilxiFANE8GhKSsW6In8_c"
 );
 
-router.post("/register-device", (req, res) => {
-  const { deviceToken, userId } = req.body;
-
+router.post("/register-device", (req, res, next) => {
   Notifications.create(req.body)
     .then((Notifications) => {
       res.send(Notifications);
@@ -24,7 +22,7 @@ router.get("/getUsers", (req, res) => {
   });
 });
 
-router.post("/send-notification", (req, res) => {
+router.post("/send-notification", (req, res, error) => {
   var firebaseDeviceTokens = [];
   // var token = req.body.token.toString();
 
@@ -36,7 +34,7 @@ router.post("/send-notification", (req, res) => {
     { title: req.body.title, body: req.body.body },
     firebaseDeviceTokens
   );
-  res.json("ok");
+  res.json(firebaseDeviceTokens);
 });
 
 sendNotificationAndroid = (msg, devicesIds) => {
