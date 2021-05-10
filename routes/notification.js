@@ -12,6 +12,7 @@ router.post("/register-device", (req, res, next) => {
   // save the record in your database
 });
 
+
 router.get("/getUsers", (req, res) => {
   Notifications.find({}).then((tokens) => {
     res.send(tokens);
