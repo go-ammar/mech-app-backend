@@ -24,11 +24,7 @@ router.get("/getUsers", (req, res) => {
 
 router.post("/send-notification", (req, res, error) => {
   var firebaseDeviceTokens = [];
-  // var token = req.body.token.toString();
-
-  Notifications.find({}).then((notifs) => {
-    res.send(notifs);
-  });
+  firebaseDeviceTokens = req.body.tokens;
 
   sendNotificationAndroid(
     { title: req.body.title, body: req.body.body },
