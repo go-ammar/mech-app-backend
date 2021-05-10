@@ -23,6 +23,8 @@ router.post("/send-notification", (req, res) => {
   var firebaseDeviceTokens = [];
   var token = req.body.token.toString();
 
+  //Fetch all tokens
+  //add tokens in the array
   firebaseDeviceTokens.push(token);
 
   sendNotificationAndroid(
