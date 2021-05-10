@@ -9,7 +9,7 @@ const NotificationSchema = new Schema({
 
   user_id: {
     type: String,
-    required: [true, "Please Enter Service Price"],
+    required: [true, "Please Enter userID"],
   }
 });
 

@@ -17,16 +17,15 @@ router.post("/register-device", (req, res, next) => {
 });
 
 
+router.get("/getUsers", (req, res) => {
+  Notifications.find({}).then((tokens) => {
+    res.send(tokens);
+  });
+});
 
 router.post("/send-notification", (req, res, error) => {
   var firebaseDeviceTokens = [];
-  // var token = req.body.token.toString();
-
-  Notifications.find({}).then((notifs) => {
-    for (var item in notifs) {
-      firebaseDeviceTokens.push(item["device_token"]);
-    }
-  }).catch(error);
+  firebaseDeviceTokens = req.body.tokens;
 
   sendNotificationAndroid(
     { title: req.body.title, body: req.body.body },
