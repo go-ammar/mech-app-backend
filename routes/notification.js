@@ -18,14 +18,18 @@ router.post("/register-device", (req, res) => {
   // save the record in your database
 });
 
+router.get("/getUsers", (req, res) => {
+  Notifications.find({}).then((tokens) => {
+    res.send(tokens);
+  });
+});
+
 router.post("/send-notification", (req, res) => {
   var firebaseDeviceTokens = [];
   // var token = req.body.token.toString();
 
   Notifications.find({}).then((notifs) => {
-    for (var item in notifs) {
-      firebaseDeviceTokens.push(item["device_token"]);
-    }
+    res.send(notifs);
   });
 
   sendNotificationAndroid(
