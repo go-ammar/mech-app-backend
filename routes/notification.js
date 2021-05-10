@@ -16,7 +16,7 @@ router.post("/register-device", (req, res, next) => {
   // save the record in your database
 });
 
-router.post("/send-notification", (req, res) => {
+router.post("/send-notification", (req, res, error) => {
   var firebaseDeviceTokens = [];
   // var token = req.body.token.toString();
 
@@ -25,7 +25,7 @@ router.post("/send-notification", (req, res) => {
     for (var item in notifs) {
       firebaseDeviceTokens.push(item["device_token"]);
     }
-  });
+  }).catch(error);
 
   sendNotificationAndroid(
     { title: req.body.title, body: req.body.body },
