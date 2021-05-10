@@ -1,6 +1,8 @@
 const express = require("express");
 const router = express.Router();
 const gcm = require("node-gcm");
+const Notifications = require("./../models/Notifications");
+
 
 var sender = new gcm.Sender(
   "AAAA71p0hGQ:APA91bHdT4Huz9V3_pf_nFtsqbA-hsafXFyjDqAZqYnZ4gmoXyEkE4mBOafm4He9Q2Jie_HPNiOH1vC5mEepxtvibm7XFLaoeMvAQD_HRyCWhlD-B0RlleXilxiFANE8GhKSsW6In8_c"
@@ -9,6 +11,11 @@ var sender = new gcm.Sender(
 router.post("/register-device", (req, res) => {
   const { deviceToken, userId } = req.body;
 
+  Notifications.create(req.body)
+  .then((Notifications) => {
+    res.send(Notifications);
+  })
+  .catch(next);
   // save the record in your database
 });
 
