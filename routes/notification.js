@@ -16,10 +16,11 @@ router.post("/register-device", (req, res, next) => {
   // save the record in your database
 });
 
+
+
 router.post("/send-notification", (req, res, error) => {
   var firebaseDeviceTokens = [];
   // var token = req.body.token.toString();
-
 
   Notifications.find({}).then((notifs) => {
     for (var item in notifs) {
