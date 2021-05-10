@@ -7,7 +7,7 @@ var sender = new gcm.Sender(
   "AAAA71p0hGQ:APA91bHdT4Huz9V3_pf_nFtsqbA-hsafXFyjDqAZqYnZ4gmoXyEkE4mBOafm4He9Q2Jie_HPNiOH1vC5mEepxtvibm7XFLaoeMvAQD_HRyCWhlD-B0RlleXilxiFANE8GhKSsW6In8_c"
 );
 
-router.post("/register-device", (req, res) => {
+router.post("/register-device", (req, res, next) => {
   const { deviceToken, userId } = req.body;
 
   Notifications.create(req.body)
