@@ -9,6 +9,8 @@ var sender = new gcm.Sender(
 router.post("/register-device", (req, res) => {
   const { deviceToken, userId } = req.body;
 
+  res.json("Registering does work");
+
   // save the record in your database
 });
 
