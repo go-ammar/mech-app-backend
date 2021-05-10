@@ -8,8 +8,6 @@ var sender = new gcm.Sender(
 );
 
 router.post("/register-device", (req, res, next) => {
-  const { deviceToken, userId } = req.body;
-
   Notifications.create(req.body)
     .then((Notifications) => {
       res.send(Notifications);
