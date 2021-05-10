@@ -12,7 +12,6 @@ router.post("/register-device", (req, res, next) => {
   // save the record in your database
 });
 
-
 router.get("/getUsers", (req, res) => {
   Notifications.find({}).then((tokens) => {
     res.send(tokens);
@@ -42,7 +41,7 @@ sendNotificationAndroid = (msg, devicesIds) => {
   // var regTokens = ['elE6mbp1ORHw4o_BHcuncn:APA91bG8um-W6yTU7wzz_kwt7J7pothl48To4ac3OE_kOs08PmoYOjRxFP_68Z7dWlGlztoUNiwN3A6RRPT4-LnPz7pfTY9OtyUk3XGa8eYhiVGpeC_LV-mB6wruAjj6pbuaU8ELIVPc'];
 
   var sender = new gcm.Sender(
-    "AAAA71p0hGQ:APA91bHdT4Huz9V3_pf_nFtsqbA-hsafXFyjDqAZqYnZ4gmoXyEkE4mBOafm4He9Q2Jie_HPNiOH1vC5mEepxtvibm7XFLaoeMvAQD_HRyCWhlD-B0RlleXilxiFANE8GhKSsW6In8_c"
+    "AAAAVLwPkVw:APA91bHanPCA7UiC6INVhzEtF6f_jtsBTyBO8Vrk7VHJRzsNDNzj21Lt1UmdtHZJtxCjbO-iTP8s2OYEXytICQddkKvfIqZU4ZP-n6EWd8Y6LMeNFPt0r4dWmqajinUJsKbBwKiNoCx-"
   );
 
   // Actually send the message
