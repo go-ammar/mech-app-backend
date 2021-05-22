@@ -45,4 +45,23 @@ router.delete("/:id", (req, res, next) => {
   });
 });
 
+
+//get bookings by mechanic id
+router.get("/mech_id/:id", (req, res, next) => {
+  const { id } = req.query.params;
+  Booking.find({ mechanicId: id }).then((Booking) => {
+    res.send(Booking)
+  });
+
+});
+
+//get bookings by customer id
+router.get("/customer_id/:id", (req, res, next) => {
+  const { id } = req.query.params;
+  Booking.find({ userId: id }).then((Booking) => {
+    res.send(Booking)
+  });
+
+});
+
 module.exports = router;

@@ -176,4 +176,13 @@ router.put("/:id", (req, res) => {
   });
 });
 
+//get all mechanics
+router.get("/mechs", (req, res, next) => {
+  User.find({ type: 3 }).then((User) => {
+    res.send(User)
+  });
+
+});
+
+
 module.exports = router;

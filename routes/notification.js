@@ -58,4 +58,26 @@ sendNotificationAndroid = (msg, devicesIds) => {
   );
 };
 
+
+//update token by user_id
+router.put("/:id", (req, res, next) => {
+  Notifications.findOneAndUpdate({ user_id: req.query.params }, { $set: { device_token: req.body.device_token } },
+    null, function (err) {
+      if (err) {
+        console.log(err)
+      }
+    }).then((Notifications) => {
+      res.send(Notifications)
+    });
+});
+
+//get bookings by mechanic id
+router.get("/notification_user/:id", (req, res, next) => {
+  const { id } = req.query.params;
+  Notifications.find({ user_id: id }).then((Notifications) => {
+    res.send(Notifications)
+  });
+
+});
+
 module.exports = router;

@@ -45,4 +45,13 @@ router.delete("/:id", (req, res, next) => {
   });
 });
 
+//get Service by mechanic id
+router.get("/services_by_id/:id", (req, res, next) => {
+  const { id } = req.query.params;
+  Service.find({ mechanic: id }).then((Service) => {
+    res.send(Service)
+  });
+
+});
+
 module.exports = router;
