@@ -74,7 +74,7 @@ router.post("/register", (req, res) => {
   //Check Simple Validation
   if (!name || !email || !password || !phone || !latitude || !longitude) {
     return res.status(400).json({ msg: "Please Enter All the fields" });
-    
+
   }
 
   //Check For Existing User
@@ -177,8 +177,9 @@ router.put("/:id", (req, res) => {
 });
 
 //get all mechanics
-router.get("/mechs", (req, res, next) => {
-  User.find({ type: 3 }).then((User) => {
+router.get("/mechs/:id", (req, res, next) => {
+  const { id } = req.params;
+  User.find({ type: id }).then((User) => {
     res.send(User)
   });
 
