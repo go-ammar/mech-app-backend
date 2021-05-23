@@ -14,7 +14,7 @@ router.post("/register-device", (req, res, next) => {
 
 router.get("/getUsers", (req, res) => {
   Notifications.find({}).then((tokens) => {
-    res.send(tokens);
+    res.json({ tokens });
   });
 });
 
@@ -26,7 +26,7 @@ router.post("/send-notification", (req, res, error) => {
     { title: req.body.title, body: req.body.body },
     firebaseDeviceTokens
   );
-  res.json(firebaseDeviceTokens);
+  res.json({ firebaseDeviceTokens });
 });
 
 sendNotificationAndroid = (msg, devicesIds) => {
@@ -62,13 +62,14 @@ sendNotificationAndroid = (msg, devicesIds) => {
 //update token by user_id
 router.put("/:id", (req, res, next) => {
   console.log("Enpoint working");
-  Notifications.findOneAndUpdate({ user_id: req.params }, { $set: { device_token: req.body } },
+  const { id } = req.params;
+  Notifications.findOneAndUpdate({ user_id: id }, { $set: { device_token: req.body.device_token } },
     null, function (err) {
       if (err) {
         console.log(err)
       }
     }).then((Notifications) => {
-      res.send(Notifications)
+      res.json(Notifications)
     });
 });
 
@@ -83,7 +84,8 @@ router.get("/notification_user/:id", (req, res, next) => {
 
 //Delete notifications from the database
 router.delete("/:id", (req, res, next) => {
-  Notifications.findByIdAndDelete({ user_id: req.params.id }).then((Notifications) => {
+  const { id } = req.params;
+  Notifications.deleteMany({ user_id: id }).then((Notifications) => {
     res.send(Notifications);
   });
 });

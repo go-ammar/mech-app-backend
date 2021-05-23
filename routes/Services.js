@@ -49,7 +49,7 @@ router.delete("/:id", (req, res, next) => {
 router.get("/services_by_id/:id", (req, res, next) => {
   const { id } = req.params;
   Service.find({ mechanic: id }).then((Service) => {
-    res.send(Service)
+    res.json({ Service })
   });
 
 });
