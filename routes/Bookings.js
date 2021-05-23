@@ -50,7 +50,7 @@ router.delete("/:id", (req, res, next) => {
 router.get("/mech_id/:id", (req, res, next) => {
   const { id } = req.params;
   Booking.find({ mechanicId: id }).then((Booking) => {
-    res.send(Booking)
+    res.json({Booking})
   });
 
 });
@@ -59,7 +59,7 @@ router.get("/mech_id/:id", (req, res, next) => {
 router.get("/customer_id/:id", (req, res, next) => {
   const { id } = req.params;
   Booking.find({ userId: id }).then((Booking) => {
-    res.send(Booking)
+    res.json({Booking})
   });
 
 });
