@@ -61,6 +61,7 @@ sendNotificationAndroid = (msg, devicesIds) => {
 
 //update token by user_id
 router.put("/:id", (req, res, next) => {
+  console.log("Enpoint working");
   Notifications.findOneAndUpdate({ user_id: req.params }, { $set: { device_token: req.body } },
     null, function (err) {
       if (err) {
@@ -71,7 +72,7 @@ router.put("/:id", (req, res, next) => {
     });
 });
 
-//get bookings by mechanic id
+//get notifications by mechanic id
 router.get("/notification_user/:id", (req, res, next) => {
   const { id } = req.params;
   Notifications.find({ user_id: id }).then((Notifications) => {
@@ -80,7 +81,7 @@ router.get("/notification_user/:id", (req, res, next) => {
 
 });
 
-//Delete Booking from the database
+//Delete notifications from the database
 router.delete("/:id", (req, res, next) => {
   Notifications.findByIdAndDelete({ user_id: req.params.id }).then((Notifications) => {
     res.send(Notifications);
