@@ -48,7 +48,7 @@ router.delete("/:id", (req, res, next) => {
 
 //get bookings by mechanic id
 router.get("/mech_id/:id", (req, res, next) => {
-  const { id } = req.query.params;
+  const { id } = req.params;
   Booking.find({ mechanicId: id }).then((Booking) => {
     res.send(Booking)
   });
@@ -57,7 +57,7 @@ router.get("/mech_id/:id", (req, res, next) => {
 
 //get bookings by customer id
 router.get("/customer_id/:id", (req, res, next) => {
-  const { id } = req.query.params;
+  const { id } = req.params;
   Booking.find({ userId: id }).then((Booking) => {
     res.send(Booking)
   });
