@@ -3,6 +3,10 @@ const router = express.Router();
 const gcm = require("node-gcm");
 const Notifications = require("./../models/Notifications");
 
+
+//Routes for Notifications 
+
+//Register Device
 router.post("/register-device", (req, res, next) => {
   Notifications.create(req.body)
     .then((Notifications) => {
@@ -12,12 +16,14 @@ router.post("/register-device", (req, res, next) => {
   // save the record in your database
 });
 
+//Find the User
 router.get("/getUsers", (req, res) => {
   Notifications.find({}).then((tokens) => {
     res.json({ tokens });
   });
 });
 
+//Send Notification
 router.post("/send-notification", (req, res, error) => {
   var firebaseDeviceTokens = [];
   firebaseDeviceTokens = req.body.tokens;

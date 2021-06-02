@@ -3,6 +3,8 @@ const router = express.Router();
 const Service = require("./../models/Service");
 // const bodyParser = require('body-parser');
 
+//Routes for Services 
+
 // get the service from database
 router.get("/", (req, res, next) => {
   Service.find({}).then((Services) => {

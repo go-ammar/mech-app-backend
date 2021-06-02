@@ -3,6 +3,7 @@ const router = express.Router();
 const Booking = require("./../models/Booking");
 // const bodyParser = require('body-parser');
 
+//Routes for Bookings
 // get the Booking from database
 router.get("/", (req, res, next) => {
   Booking.find({}).then((Bookings) => {

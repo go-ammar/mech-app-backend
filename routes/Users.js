@@ -47,6 +47,8 @@ const User = require("./../models/User");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
+//Routes for Users 
+
 //Get All the Users from Data Base
 router.get("/", (req, res) => {
   User.find({}).then((users) => {
